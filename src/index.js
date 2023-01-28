@@ -6,10 +6,9 @@ import { App } from "App";
 import { StrictMode } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { PageNotFound } from "pages/PageNotFound/PageNotFound";
-import { NoteBrowse } from "pages/notes-browse/NoteBrowse";
 import { NoteCreate } from "pages/NoteCreate/NoteCreate";
 import { Note } from "pages/Note/Note";
-import { NoteUpdate } from "pages/NoteUpdate";
+import { NoteList } from "containers/NoteList/NoteList";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -19,7 +18,7 @@ root.render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />}>
-            <Route path="/" element={<NoteBrowse />} />
+            <Route path="/" element={<NoteList />} />
             <Route path="/note/:noteId" element={<Note />} />
             <Route path="/note/new" element={<NoteCreate />} />
             <Route path="*" element={<PageNotFound />} />

@@ -1,10 +1,9 @@
 import s from "./style.module.css";
-import { PencilFill, Trash, TrashFill } from "react-bootstrap-icons";
+import { PencilFill, TrashFill } from "react-bootstrap-icons";
 import { ButtonPrimary } from "components/ButtonPrimary/ButtonPrimary";
 import { useState } from "react";
 import { ValidatorService } from "services/form-validators";
 import { FieldError } from "components/FieldError/FieldError";
-import { noteReducer } from "store/note/note-slice";
 
 const VALIDATORS = {
   title: (value) => {
@@ -23,10 +22,13 @@ export function NoteForm({
   onClickTrash,
   onSubmit,
 }) {
-  const [formValues, setFormValues] = useState({ title: "", content: "" });
+  const [formValues, setFormValues] = useState({
+    title: note?.title || "",
+    content: note?.content || "",
+  });
   const [formErrors, setFormErrors] = useState({
-    title: "",
-    content: "",
+    title: note?.title ? undefined : "",
+    content: note?.content ? undefined : "",
   });
 
   function validate(fieldName, fieldValue) {
@@ -66,6 +68,7 @@ export function NoteForm({
         type="text"
         name="title"
         className="form-control"
+        value={formValues.title}
       />
       <FieldError msg={formErrors.title} />
     </div>
@@ -80,6 +83,7 @@ export function NoteForm({
         name="content"
         className="form-control"
         row="5"
+        value={formValues.content}
       />
       <FieldError msg={formErrors.content} />
     </div>
