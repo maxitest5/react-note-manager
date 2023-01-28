@@ -8,7 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { PageNotFound } from "pages/PageNotFound/PageNotFound";
 import { NoteCreate } from "pages/NoteCreate/NoteCreate";
 import { Note } from "pages/Note/Note";
-import { NoteList } from "containers/NoteList/NoteList";
+import { NoteBrowse } from "pages/NoteBrowse/NoteBrowse";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -18,7 +18,7 @@ root.render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />}>
-            <Route path="/" element={<NoteList />} />
+            <Route path="/" element={<NoteBrowse />} />
             <Route path="/note/:noteId" element={<Note />} />
             <Route path="/note/new" element={<NoteCreate />} />
             <Route path="*" element={<PageNotFound />} />
